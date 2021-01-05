@@ -26,6 +26,7 @@
     "prettier": "^2.2.1"
   },
   "dependencies": {
+    "awilix": "^4.3.1",
     "serverless-mysql": "^1.5.4"
   }
 }
