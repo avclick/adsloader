@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "migrate": "node sql/migrate-db.js"
   },
   "type": "module",
   "repository": {
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "awilix": "^4.3.1",
+    "dotenv": "^8.2.0",
     "serverless-mysql": "^1.5.4"
   }
 }

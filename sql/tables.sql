@@ -1,0 +1,11 @@
+ CREATE TABLE IF NOT EXISTS ads (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      title TEXT NOT NULL,
+      description TEXT NOT NULL,
+      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at 
+        TIMESTAMP 
+        NOT NULL 
+        DEFAULT CURRENT_TIMESTAMP 
+        ON UPDATE CURRENT_TIMESTAMP
+    )
