@@ -1,4 +1,4 @@
-import * as mysql from 'serverless-mysql';
+import mysql from 'serverless-mysql';
 
 export default class AdsRepository {
   constructor(dbConfig) {
