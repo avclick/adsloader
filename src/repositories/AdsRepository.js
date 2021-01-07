@@ -1,7 +1,6 @@
 import mysql from 'serverless-mysql';
-import jsonSqlBuilder from 'json-sql';
-const jsonSql = jsonSqlBuilder({ dialect: 'mysql' });
-//, namedValues: false
+// import jsonSqlBuilder from 'json-sql';
+// const jsonSql = jsonSqlBuilder({ dialect: 'mysql' });
 
 export default class AdsRepository {
   constructor({ dbConfig }) {
@@ -17,13 +16,13 @@ export default class AdsRepository {
   }
 
   async save(values) {
-    const sql = jsonSql.build({
-      type: 'insert',
-      table: 'ads',
-      values
-    });
-    console.log(sql);
-    const results = await this.connect.query(sql.query, sql.values);
+    // const sql = jsonSql.build({
+    //   type: 'insert',
+    //   table: 'ads',
+    //   values
+    // });
+    // console.log(sql);
+    const results = await this.connect.query('INSERT INTO ads set ?', values);
     await this.connect.end();
     return results;
   }

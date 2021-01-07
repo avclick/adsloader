@@ -23,5 +23,9 @@ const ad = {
 };
 it('should save ad', async () => {
   const res = await repository.save(ad);
-  expect(res).toBe({});
+  expect(res.affectedRows).toBe(1);
+});
+
+afterAll(() => {
+  return repository.connect.quit();
 });

@@ -29,7 +29,6 @@
   "dependencies": {
     "awilix": "^4.3.1",
     "dotenv": "^8.2.0",
-    "json-sql": "^0.5.0",
     "serverless-mysql": "^1.5.4"
   }
 }
