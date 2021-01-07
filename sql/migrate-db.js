@@ -3,11 +3,7 @@ import * as path from 'path';
 import mysql from 'serverless-mysql';
 import * as dotenv from 'dotenv';
 
-console.log(mysql);
 const envPath = path.resolve(process.cwd(), '.env.local');
-
-console.log({ envPath });
-
 dotenv.config({ path: envPath });
 
 // console.log(process.env);
