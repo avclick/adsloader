@@ -8,13 +8,13 @@ export default class AdsRepository {
   }
 
   async list(params) {
-    const results = await this.connect.query(`select * from ads where ?`, params);
+    const results = await this.connect.query(`select * from ADS where ?`, params);
     await this.connect.end();
     return results;
   }
 
   async save(values) {
-    const results = await this.connect.query('INSERT INTO ads set ?', values);
+    const results = await this.connect.query('INSERT INTO ADS set ?', values);
     await this.connect.end();
     return results;
   }

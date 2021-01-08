@@ -1,5 +1,4 @@
 import awilix from 'awilix';
-import AdsApiAdapter from './adapters/AdsApiAdapter';
 
 export default class Application {
   constructor() {

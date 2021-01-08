@@ -1,10 +1,10 @@
 import Application from '../Application';
 
 const app = new Application();
-// console.log(app.container);
 
 beforeAll(async () => {
   const res = await app.init();
+  // console.log(app.container);
   return res;
 });
 
