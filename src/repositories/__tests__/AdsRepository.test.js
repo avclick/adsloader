@@ -14,18 +14,32 @@ const dbConfig = {
 // console.log(config);
 
 const repository = new AdsRepository({ dbConfig });
+
+// beforeAll(async () => {
+//   await repository.connect.transaction();
+// });
+afterAll(async () => {
+  // await repository.connect.rollback();
+  return repository.connect.quit();
+});
+
+function randomInt(min, max) {
+  return min + Math.floor((max - min) * Math.random());
+}
+
 const ad = {
   type: 'Продам',
   category: 'Дом',
-  title: 'Дом 165 м² на участке 10 сот.',
-  description:
-    'Продам Шикарный 2 этажный Коттедж. С возможностью обустройства 3 этажа. По документам дом 165 кв.м. в реальности около 240 кв.м. 1 этаж - 88,2 кв.м., 2 этаж 75,7 кв.м. Участок 10 соток в собственности!!!\n\n1 Ээтаж большая Кухня-гостиная + 1 Спальная комната + Сан. узел.\n\n2 Этаж 4 спальных комнаты. + Сан.узел\n\nДом построен из Газобетона автоклавного (привезен с Иркутска) установлен на монолитной плате. 1/2 этаж перекрытия из монолитной плиты. 2/3 этаж деревянные перекрытия. Крыша в ширину дома, можно обустроить 3 этаж. Крыша сделана из Шингласа. Обшит Дом Сендвич панелями. Отопление электрическое и Твердотопливный (уголь, дрова). \n\nТак же на участке находится Баня, теплица, хоз. постройки, смотровая яма. Есть фундамент для постройки любого сооружения - Гараж, Летняя кухня, Беседка и т.д.\n\nТот кто разбирается в строительстве сразу поймет, что все материалы качественные и дорогие. Строили дом для себя.'
+  title: 'Дом ' + randomInt(1, 500) + ' м² на участке ' + randomInt(1, 100) + ' сот.',
+  description: 'Продам Шикарный ' + randomInt(1, 3) + '  этажный Коттедж.'
 };
 it('should save ad', async () => {
   const res = await repository.save(ad);
   expect(res.affectedRows).toBe(1);
 });
 
-afterAll(() => {
-  return repository.connect.quit();
+it('should find ad', async () => {
+  const res = await repository.list({ title: ad.title });
+  expect(res[0].title).toBe(ad.title);
+  expect(res[0].description).toBe(ad.description);
 });
