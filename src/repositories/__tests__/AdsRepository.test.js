@@ -2,19 +2,14 @@ import AdsRepository from '../AdsRepository';
 
 import * as dotenv from 'dotenv';
 import * as path from 'path';
+import DataSourceFactory from '../../database/DataSourceFactory';
 
-const envPath = path.resolve(process.cwd(), '.env.local');
-dotenv.config({ path: envPath });
-const dbConfig = {
-  host: process.env.MYSQL_HOST,
-  database: process.env.MYSQL_DATABASE,
-  user: process.env.MYSQL_USERNAME,
-  password: process.env.MYSQL_PASSWORD
-};
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
+const dataSource = DataSourceFactory();
 
 // console.log(config);
 
-const repository = new AdsRepository({ dbConfig });
+const repository = new AdsRepository({ dataSource });
 
 // beforeAll(async () => {
 //   await repository.connect.transaction();

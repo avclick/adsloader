@@ -1,10 +1,10 @@
 import mysql from 'serverless-mysql';
 
 export default class DictionaryRepository {
-  constructor({ dbConfig }) {
-    this.dbConfig = dbConfig;
+  constructor({ dataSource }) {
+    this.dataSource = dataSource;
 
-    this.connect = mysql({ config: dbConfig });
+    this.connect = mysql({ config: dataSource });
   }
 
   async find(params) {
